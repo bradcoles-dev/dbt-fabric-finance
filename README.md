@@ -42,8 +42,8 @@ dbt-fabric-finance/
 ### Prerequisites
 
 - Python 3.11+
-- [ODBC Driver 18 for SQL Server](https://learn.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server)
-- Access to a Microsoft Fabric workspace
+- A Microsoft Fabric workspace with an F-SKU capacity attached
+- An Azure App Registration (service principal) added to the workspace as Admin — personal Microsoft accounts are not supported by the Fabric REST API. See [`profiles.yml.example`](profiles.yml.example) for setup instructions.
 
 ### 1. Clone and install
 
@@ -55,12 +55,15 @@ pip install -r requirements.txt
 
 ### 2. Configure credentials
 
+Copy `profiles.yml.example` into `~/.dbt/profiles.yml`, fill in your workspace and lakehouse GUIDs, and set the three service principal environment variables:
+
 ```bash
-cp .env.example .env
-# Edit .env with your Fabric workspace and API values
+export FABRIC_CLIENT_ID="<app-client-id>"
+export FABRIC_CLIENT_SECRET="<client-secret>"
+export FABRIC_TENANT_ID="<directory-tenant-id>"
 ```
 
-Copy `profiles.yml.example` into `~/.dbt/profiles.yml` and fill in your Fabric connection details. **Do not put `profiles.yml` inside this repository.**
+**Do not put `profiles.yml` or secrets inside this repository.**
 
 ### 3. Install dbt packages
 

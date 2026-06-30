@@ -1,31 +1,33 @@
 # Copy this file structure into ~/.dbt/profiles.yml and fill in real values.
 # Never store profiles.yml inside this repository.
+#
+# This project uses dbt-fabricspark (Livy/Spark) to write Delta tables into
+# Microsoft Fabric Lakehouses. Authentication uses a service principal (Azure
+# App Registration) — personal Microsoft accounts are not supported by the
+# Fabric REST API.
+#
+# Setup:
+#   1. Register an app in Azure Portal → Entra ID → App registrations
+#   2. In Fabric Admin portal → Developer settings → enable "Service principals can use Fabric APIs"
+#   3. Add the service principal to your Fabric workspace as Admin
+#   4. pip install dbt-fabricspark
 
 dbt_fabric_finance:
   target: dev
   outputs:
     dev:
-      type: fabric
-      driver: "ODBC Driver 18 for SQL Server"
-      server: <your-workspace>.datawarehouse.fabric.microsoft.com
-      port: 1433
-      database: <your-lakehouse-or-warehouse-name>
-      schema: dbt_dev
-      authentication: CLI
-      encrypt: true
-      trust_cert: false
-      connect_timeout: 30
-    prod:
-      type: fabric
-      driver: "ODBC Driver 18 for SQL Server"
-      server: <your-workspace>.datawarehouse.fabric.microsoft.com
-      port: 1433
-      database: <your-lakehouse-or-warehouse-name>
-      schema: dbt_prod
-      authentication: ServicePrincipal
+      type: fabricspark
+      method: livy
+      authentication: serviceprincipal
       client_id: "{{ env_var('FABRIC_CLIENT_ID') }}"
       client_secret: "{{ env_var('FABRIC_CLIENT_SECRET') }}"
       tenant_id: "{{ env_var('FABRIC_TENANT_ID') }}"
-      encrypt: true
-      trust_cert: false
-      connect_timeout: 30
+      endpoint: https://api.fabric.microsoft.com/v1
+      workspaceid: "<your-workspace-guid>"
+      lakehouseid: "<your-bronze-lakehouse-guid>"
+      lakehouse: LH_Bronze
+      schema: dbo
+      threads: 1
+      high_concurrency: false
+      spark_config:
+        name: dbt-fabric-finance

@@ -168,7 +168,7 @@ spark_df = spark.createDataFrame(raw, schema=schema)
     .save(table_path)
 )
 
-print(f"Written {spark_df.count():,} rows to {table_path}")
+print(f"Written {len(raw):,} rows to {table_path}")
 
 # METADATA ********************
 
@@ -179,18 +179,9 @@ print(f"Written {spark_df.count():,} rows to {table_path}")
 
 # CELL ********************
 
-result = spark.read.format("delta").load(table_path)
-date_range = result.agg(
-    F.min("date_").alias("min_date"),
-    F.max("date_").alias("max_date"),
-).collect()[0]
-tickers_loaded = [
-    r.ticker for r in result.select("ticker").distinct().orderBy("ticker").collect()
-]
-
-print(f"Total rows : {result.count():,}")
-print(f"Tickers    : {tickers_loaded}")
-print(f"Date range : {date_range.min_date} -> {date_range.max_date}")
+print(f"Total rows : {len(raw):,}")
+print(f"Tickers    : {sorted(raw['ticker'].unique().tolist())}")
+print(f"Date range : {raw['date_'].min()} -> {raw['date_'].max()}")
 
 # METADATA ********************
 

@@ -58,9 +58,10 @@ from pyspark.sql.types import (
 # CELL ********************
 
 # Reads from dbt-seeded reference tables. Run `dbt seed` before first execution.
+# Tables land under Tables/dbo/ because the dbt profile uses schema: dbo.
 seeds_base = (
     f"abfss://{WORKSPACE_ID}@onelake.dfs.fabric.microsoft.com"
-    f"/{BRONZE_LAKEHOUSE_ID}/Tables"
+    f"/{BRONZE_LAKEHOUSE_ID}/Tables/dbo"
 )
 
 sp100_df  = spark.read.format("delta").load(f"{seeds_base}/sp100_tickers").toPandas()

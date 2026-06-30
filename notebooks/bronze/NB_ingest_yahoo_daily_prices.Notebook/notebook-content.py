@@ -43,7 +43,6 @@ WRITE_MODE = "overwrite"  # "overwrite" for full reload, "append" for incrementa
 import yfinance as yf
 import pandas as pd
 from datetime import datetime, timezone
-from pyspark.sql import functions as F
 from pyspark.sql.types import (
     StructType, StructField,
     StringType, DoubleType, LongType, DateType, TimestampType,

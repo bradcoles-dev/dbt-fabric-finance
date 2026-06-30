@@ -160,7 +160,8 @@ table_path = (
     f"/{BRONZE_LAKEHOUSE_ID}/Tables/{LAKEHOUSE_TABLE}"
 )
 
-spark_df = spark.createDataFrame(raw, schema=schema)
+col_order = ["ticker", "date_", "open_", "high_", "low_", "close_", "volume_", "ingested_at", "source"]
+spark_df = spark.createDataFrame(raw[col_order], schema=schema)
 
 (
     spark_df.write

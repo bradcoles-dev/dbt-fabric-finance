@@ -9,6 +9,17 @@
 # META   "dependencies": {}
 # META }
 
+# CELL ********************
+
+%pip install yfinance --quiet
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
 # PARAMETERS CELL ********************
 
 vl = notebookutils.variableLibrary.getLibrary("Variables")
@@ -19,17 +30,6 @@ START_DATE = "2015-01-01"
 END_DATE = None           # None = today
 LAKEHOUSE_TABLE = "raw_daily_prices"
 WRITE_MODE = "overwrite"  # "overwrite" for full reload, "append" for incremental
-
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
-
-# CELL ********************
-
-%pip install yfinance --quiet
 
 # METADATA ********************
 

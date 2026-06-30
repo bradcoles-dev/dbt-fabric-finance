@@ -1,0 +1,46 @@
+version: 2
+
+seeds:
+  - name: sp100_tickers
+    description: >
+      Approximate S&P 100 constituents — top US large-cap equities.
+      Verify and refresh against https://en.wikipedia.org/wiki/S%26P_100
+      after index rebalances (typically quarterly).
+    columns:
+      - name: ticker
+        description: Yahoo Finance ticker symbol (e.g. BRK-B).
+        tests:
+          - not_null
+          - unique
+      - name: company_name
+        description: Company display name.
+        tests:
+          - not_null
+      - name: sector
+        description: GICS sector classification.
+        tests:
+          - not_null
+      - name: exchange
+        description: Primary listing exchange (NYSE or NASDAQ).
+
+  - name: asx200_tickers
+    description: >
+      Approximate S&P/ASX 200 constituents — top Australian equities.
+      Verify and refresh against https://en.wikipedia.org/wiki/S%26P/ASX_200
+      after index rebalances (typically quarterly).
+    columns:
+      - name: ticker
+        description: Yahoo Finance ticker symbol including .AX suffix (e.g. CBA.AX).
+        tests:
+          - not_null
+          - unique
+      - name: company_name
+        description: Company display name.
+        tests:
+          - not_null
+      - name: sector
+        description: GICS sector classification.
+        tests:
+          - not_null
+      - name: exchange
+        description: Primary listing exchange (ASX).

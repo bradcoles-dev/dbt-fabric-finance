@@ -57,14 +57,17 @@ from pyspark.sql.types import (
 
 # CELL ********************
 
-sp100 = pd.read_html("https://en.wikipedia.org/wiki/S%26P_100")[2]
-us_tickers = sp100["Symbol"].str.replace(".", "-", regex=False).tolist()
+# Reads from dbt-seeded reference tables. Run `dbt seed` before first execution.
+seeds_base = (
+    f"abfss://{WORKSPACE_ID}@onelake.dfs.fabric.microsoft.com"
+    f"/{BRONZE_LAKEHOUSE_ID}/Tables"
+)
 
-asx200 = pd.read_html("https://en.wikipedia.org/wiki/S%26P/ASX_200")[1]
-asx_tickers = [t + ".AX" for t in asx200["Code"].tolist()]
+sp100_df  = spark.read.format("delta").load(f"{seeds_base}/sp100_tickers").toPandas()
+asx200_df = spark.read.format("delta").load(f"{seeds_base}/asx200_tickers").toPandas()
 
-TICKERS = us_tickers + asx_tickers
-print(f"Universe: {len(us_tickers)} S&P 100 + {len(asx_tickers)} ASX 200 = {len(TICKERS)} total tickers")
+TICKERS = sp100_df["ticker"].tolist() + asx200_df["ticker"].tolist()
+print(f"Universe: {len(sp100_df)} S&P 100 + {len(asx200_df)} ASX 200 = {len(TICKERS)} total tickers")
 
 # METADATA ********************
 

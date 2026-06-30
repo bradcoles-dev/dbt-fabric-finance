@@ -1,0 +1,101 @@
+ticker,company_name,sector,exchange
+AAPL,Apple Inc,Information Technology,NASDAQ
+MSFT,Microsoft Corp,Information Technology,NASDAQ
+NVDA,NVIDIA Corp,Information Technology,NASDAQ
+CSCO,Cisco Systems Inc,Information Technology,NASDAQ
+IBM,IBM Corp,Information Technology,NYSE
+INTC,Intel Corp,Information Technology,NASDAQ
+ORCL,Oracle Corp,Information Technology,NYSE
+QCOM,Qualcomm Inc,Information Technology,NASDAQ
+TXN,Texas Instruments Inc,Information Technology,NASDAQ
+ACN,Accenture plc,Information Technology,NYSE
+ADBE,Adobe Inc,Information Technology,NASDAQ
+CRM,Salesforce Inc,Information Technology,NYSE
+GOOGL,Alphabet Inc,Communication Services,NASDAQ
+META,Meta Platforms Inc,Communication Services,NASDAQ
+DIS,Walt Disney Co,Communication Services,NYSE
+NFLX,Netflix Inc,Communication Services,NASDAQ
+CMCSA,Comcast Corp,Communication Services,NASDAQ
+T,AT&T Inc,Communication Services,NYSE
+VZ,Verizon Communications,Communication Services,NYSE
+TMUS,T-Mobile US Inc,Communication Services,NASDAQ
+AMZN,Amazon.com Inc,Consumer Discretionary,NASDAQ
+TSLA,Tesla Inc,Consumer Discretionary,NASDAQ
+MCD,McDonald's Corp,Consumer Discretionary,NYSE
+HD,Home Depot Inc,Consumer Discretionary,NYSE
+LOW,Lowe's Companies Inc,Consumer Discretionary,NYSE
+TGT,Target Corp,Consumer Discretionary,NYSE
+BKNG,Booking Holdings Inc,Consumer Discretionary,NASDAQ
+F,Ford Motor Co,Consumer Discretionary,NYSE
+GM,General Motors Co,Consumer Discretionary,NYSE
+WMT,Walmart Inc,Consumer Staples,NYSE
+KO,Coca-Cola Co,Consumer Staples,NYSE
+PEP,PepsiCo Inc,Consumer Staples,NASDAQ
+PG,Procter & Gamble Co,Consumer Staples,NYSE
+COST,Costco Wholesale Corp,Consumer Staples,NASDAQ
+MO,Altria Group Inc,Consumer Staples,NYSE
+PM,Philip Morris International,Consumer Staples,NYSE
+MDLZ,Mondelez International,Consumer Staples,NASDAQ
+CL,Colgate-Palmolive Co,Consumer Staples,NYSE
+KHC,Kraft Heinz Co,Consumer Staples,NASDAQ
+UNH,UnitedHealth Group Inc,Health Care,NYSE
+JNJ,Johnson & Johnson,Health Care,NYSE
+LLY,Eli Lilly and Co,Health Care,NYSE
+MRK,Merck & Co Inc,Health Care,NYSE
+ABT,Abbott Laboratories,Health Care,NYSE
+TMO,Thermo Fisher Scientific,Health Care,NYSE
+ABBV,AbbVie Inc,Health Care,NYSE
+CVS,CVS Health Corp,Health Care,NYSE
+BMY,Bristol-Myers Squibb,Health Care,NYSE
+AMGN,Amgen Inc,Health Care,NASDAQ
+GILD,Gilead Sciences Inc,Health Care,NASDAQ
+MDT,Medtronic plc,Health Care,NYSE
+DHR,Danaher Corp,Health Care,NYSE
+PFE,Pfizer Inc,Health Care,NYSE
+BIIB,Biogen Inc,Health Care,NASDAQ
+BRK-B,Berkshire Hathaway Inc,Financials,NYSE
+JPM,JPMorgan Chase & Co,Financials,NYSE
+V,Visa Inc,Financials,NYSE
+MA,Mastercard Inc,Financials,NYSE
+BAC,Bank of America Corp,Financials,NYSE
+WFC,Wells Fargo & Co,Financials,NYSE
+GS,Goldman Sachs Group,Financials,NYSE
+MS,Morgan Stanley,Financials,NYSE
+AXP,American Express Co,Financials,NYSE
+C,Citigroup Inc,Financials,NYSE
+BLK,BlackRock Inc,Financials,NYSE
+USB,US Bancorp,Financials,NYSE
+COF,Capital One Financial,Financials,NYSE
+MET,MetLife Inc,Financials,NYSE
+AIG,American International Group,Financials,NYSE
+ALL,Allstate Corp,Financials,NYSE
+BK,Bank of New York Mellon,Financials,NYSE
+SCHW,Charles Schwab Corp,Financials,NYSE
+GE,GE Aerospace,Industrials,NYSE
+CAT,Caterpillar Inc,Industrials,NYSE
+BA,Boeing Co,Industrials,NYSE
+HON,Honeywell International,Industrials,NASDAQ
+UNP,Union Pacific Corp,Industrials,NYSE
+UPS,United Parcel Service,Industrials,NYSE
+RTX,RTX Corp,Industrials,NYSE
+LMT,Lockheed Martin Corp,Industrials,NYSE
+GD,General Dynamics Corp,Industrials,NYSE
+MMM,3M Co,Industrials,NYSE
+FDX,FedEx Corp,Industrials,NYSE
+EMR,Emerson Electric Co,Industrials,NYSE
+DE,Deere & Company,Industrials,NYSE
+XOM,Exxon Mobil Corp,Energy,NYSE
+CVX,Chevron Corp,Energy,NYSE
+COP,ConocoPhillips,Energy,NYSE
+OXY,Occidental Petroleum,Energy,NYSE
+SLB,SLB,Energy,NYSE
+KMI,Kinder Morgan Inc,Energy,NYSE
+NEE,NextEra Energy Inc,Utilities,NYSE
+DUK,Duke Energy Corp,Utilities,NYSE
+SO,Southern Company,Utilities,NYSE
+EXC,Exelon Corp,Utilities,NASDAQ
+AMT,American Tower Corp,Real Estate,NYSE
+PSA,Public Storage,Real Estate,NYSE
+SPG,Simon Property Group,Real Estate,NYSE
+DOW,Dow Inc,Materials,NYSE
+DD,DuPont de Nemours,Materials,NYSE

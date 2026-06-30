@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: bronze
+    description: Raw financial market data landed by Fabric ingestion notebooks.
+    schema: bronze
+    tables: []
+    # Tables will be registered here as ingestion notebooks are built.
+    # Example entry:
+    # - name: raw_daily_prices
+    #   description: End-of-day OHLCV prices from the market data API.

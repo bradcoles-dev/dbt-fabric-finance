@@ -1,0 +1,31 @@
+# Copy this file structure into ~/.dbt/profiles.yml and fill in real values.
+# Never store profiles.yml inside this repository.
+
+dbt_fabric_finance:
+  target: dev
+  outputs:
+    dev:
+      type: fabric
+      driver: "ODBC Driver 18 for SQL Server"
+      server: <your-workspace>.datawarehouse.fabric.microsoft.com
+      port: 1433
+      database: <your-lakehouse-or-warehouse-name>
+      schema: dbt_dev
+      authentication: CLI
+      encrypt: true
+      trust_cert: false
+      connect_timeout: 30
+    prod:
+      type: fabric
+      driver: "ODBC Driver 18 for SQL Server"
+      server: <your-workspace>.datawarehouse.fabric.microsoft.com
+      port: 1433
+      database: <your-lakehouse-or-warehouse-name>
+      schema: dbt_prod
+      authentication: ServicePrincipal
+      client_id: "{{ env_var('FABRIC_CLIENT_ID') }}"
+      client_secret: "{{ env_var('FABRIC_CLIENT_SECRET') }}"
+      tenant_id: "{{ env_var('FABRIC_TENANT_ID') }}"
+      encrypt: true
+      trust_cert: false
+      connect_timeout: 30

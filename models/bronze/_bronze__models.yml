@@ -1,0 +1,11 @@
+version: 2
+
+models: []
+# Bronze model documentation and schema tests go here.
+# Example entry:
+# - name: stg_bronze__daily_prices
+#   description: Staged view over the raw daily prices source table.
+#   columns:
+#     - name: ticker
+#       tests:
+#         - not_null

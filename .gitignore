@@ -1,0 +1,34 @@
+# dbt artifacts
+target/
+dbt_packages/
+logs/
+
+# Credentials and environment
+.env
+profiles.yml
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+dist/
+build/
+*.egg
+
+# IDE
+.vscode/
+.idea/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter / Fabric notebooks (local exports)
+.ipynb_checkpoints/
+*.ipynb~
+
+# SQLFluff cache
+.sqlfluff_cache/

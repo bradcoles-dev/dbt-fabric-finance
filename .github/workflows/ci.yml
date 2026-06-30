@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  lint-and-compile:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Install dbt packages
+        run: dbt deps
+        env:
+          DBT_PROFILES_DIR: .
+
+      - name: dbt compile
+        run: dbt compile --profiles-dir . --target dev
+        env:
+          DBT_TARGET: dev
+          # Connection values are not required for compile-only runs against
+          # the dbt-fabric adapter when no warehouse connection is made.
+
+      - name: SQL lint
+        run: sqlfluff lint models/ --dialect tsql

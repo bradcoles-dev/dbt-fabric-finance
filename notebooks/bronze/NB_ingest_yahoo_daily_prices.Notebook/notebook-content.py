@@ -115,7 +115,7 @@ raw.head()
 
 # CELL ********************
 
-raw["date_"] = pd.to_datetime(raw["date"]).dt.date
+raw["date_"] = pd.to_datetime(raw["date"], utc=True).dt.date
 raw["ingested_at"] = datetime.now(timezone.utc)
 raw["source"] = "yahoo_finance"
 

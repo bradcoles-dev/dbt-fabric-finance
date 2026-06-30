@@ -28,6 +28,7 @@ BRONZE_LAKEHOUSE_ID = vl.BRONZE_LAKEHOUSE_ID
 
 START_DATE = "2015-01-01"
 END_DATE = None           # None = today
+LAKEHOUSE_SCHEMA = "dbo"
 LAKEHOUSE_TABLE = "raw_daily_prices"
 WRITE_MODE = "overwrite"  # "overwrite" for full reload, "append" for incremental
 
@@ -157,7 +158,7 @@ schema = StructType([
 
 table_path = (
     f"abfss://{WORKSPACE_ID}@onelake.dfs.fabric.microsoft.com"
-    f"/{BRONZE_LAKEHOUSE_ID}/Tables/{LAKEHOUSE_TABLE}"
+    f"/{BRONZE_LAKEHOUSE_ID}/Tables/{LAKEHOUSE_SCHEMA}/{LAKEHOUSE_TABLE}"
 )
 
 col_order = ["ticker", "date_", "open_", "high_", "low_", "close_", "volume_", "ingested_at", "source"]

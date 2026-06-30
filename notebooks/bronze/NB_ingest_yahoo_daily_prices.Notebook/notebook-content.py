@@ -11,10 +11,10 @@
 
 # PARAMETERS CELL ********************
 
-TICKERS = [
-    "AAPL", "MSFT", "GOOGL", "AMZN", "META",
-    "TSLA", "NVDA", "JPM", "GS", "BRK-B",
-]
+vl = notebookutils.variableLibrary.getLibrary("Variables")
+WORKSPACE_ID = vl.WORKSPACE_ID
+BRONZE_LAKEHOUSE_ID = vl.BRONZE_LAKEHOUSE_ID
+
 START_DATE = "2015-01-01"
 END_DATE = None           # None = today
 LAKEHOUSE_TABLE = "raw_daily_prices"
@@ -48,6 +48,24 @@ from pyspark.sql.types import (
     StructType, StructField,
     StringType, DoubleType, LongType, DateType, TimestampType,
 )
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+sp100 = pd.read_html("https://en.wikipedia.org/wiki/S%26P_100")[2]
+us_tickers = sp100["Symbol"].str.replace(".", "-", regex=False).tolist()
+
+asx200 = pd.read_html("https://en.wikipedia.org/wiki/S%26P/ASX_200")[1]
+asx_tickers = [t + ".AX" for t in asx200["Code"].tolist()]
+
+TICKERS = us_tickers + asx_tickers
+print(f"Universe: {len(us_tickers)} S&P 100 + {len(asx_tickers)} ASX 200 = {len(TICKERS)} total tickers")
 
 # METADATA ********************
 
@@ -134,6 +152,11 @@ schema = StructType([
     StructField("source",      StringType(),    False),
 ])
 
+table_path = (
+    f"abfss://{WORKSPACE_ID}@onelake.dfs.fabric.microsoft.com"
+    f"/{BRONZE_LAKEHOUSE_ID}/Tables/{LAKEHOUSE_TABLE}"
+)
+
 spark_df = spark.createDataFrame(raw, schema=schema)
 
 (
@@ -142,10 +165,10 @@ spark_df = spark.createDataFrame(raw, schema=schema)
     .mode(WRITE_MODE)
     .partitionBy("date_")
     .option("mergeSchema", "true")
-    .saveAsTable(LAKEHOUSE_TABLE)
+    .save(table_path)
 )
 
-print(f"Written {spark_df.count():,} rows to '{LAKEHOUSE_TABLE}'.")
+print(f"Written {spark_df.count():,} rows to {table_path}")
 
 # METADATA ********************
 
@@ -156,7 +179,7 @@ print(f"Written {spark_df.count():,} rows to '{LAKEHOUSE_TABLE}'.")
 
 # CELL ********************
 
-result = spark.table(LAKEHOUSE_TABLE)
+result = spark.read.format("delta").load(table_path)
 date_range = result.agg(
     F.min("date_").alias("min_date"),
     F.max("date_").alias("max_date"),

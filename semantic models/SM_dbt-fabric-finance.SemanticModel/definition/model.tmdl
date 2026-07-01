@@ -8,7 +8,11 @@ model Model
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
-annotation PBI_QueryOrder = ["Table"]
+annotation PBI_QueryOrder = ["DirectLake - LH_Bronze"]
 
-ref table Table
+annotation PBI_ProTooling = ["DirectLakeOnOneLakeInWeb","WebModelingEdit"]
+
+ref table gold__risk_metrics
+ref table gold__valuation_factors
+ref table gold__return_covariance
 

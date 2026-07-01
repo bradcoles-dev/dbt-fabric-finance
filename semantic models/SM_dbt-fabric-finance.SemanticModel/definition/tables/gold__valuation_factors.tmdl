@@ -1,0 +1,403 @@
+table gold__valuation_factors
+	lineageTag: d8d862cb-d73c-48f3-b02a-7d639b163371
+	sourceLineageTag: [gold].[gold__valuation_factors]
+
+	column ticker
+		dataType: string
+		lineageTag: 3063bebc-7f52-4da3-b9f2-5c92fafe2e83
+		sourceLineageTag: ticker
+		summarizeBy: none
+		sourceColumn: ticker
+
+		annotation SummarizationSetBy = Automatic
+
+	column company_name
+		dataType: string
+		lineageTag: 5bc8125a-0003-4eaf-8c51-be0bc0d6e60d
+		sourceLineageTag: company_name
+		summarizeBy: none
+		sourceColumn: company_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column sector
+		dataType: string
+		lineageTag: c7c1b24f-da15-4002-b830-de755b44231d
+		sourceLineageTag: sector
+		summarizeBy: none
+		sourceColumn: sector
+
+		annotation SummarizationSetBy = Automatic
+
+	column industry
+		dataType: string
+		lineageTag: 178ccca7-fd27-4ff3-87c1-e04a937fc64b
+		sourceLineageTag: industry
+		summarizeBy: none
+		sourceColumn: industry
+
+		annotation SummarizationSetBy = Automatic
+
+	column country
+		dataType: string
+		lineageTag: 7ff9d6c7-35f2-4ed0-bcc4-3dfcd0019988
+		sourceLineageTag: country
+		summarizeBy: none
+		sourceColumn: country
+
+		annotation SummarizationSetBy = Automatic
+
+	column currency
+		dataType: string
+		lineageTag: b9cee74d-6f20-4efd-a12d-31d33fbf4c8c
+		sourceLineageTag: currency
+		summarizeBy: none
+		sourceColumn: currency
+
+		annotation SummarizationSetBy = Automatic
+
+	column market_cap
+		dataType: int64
+		formatString: 0
+		lineageTag: eb1f15aa-2e5b-42f8-9e28-7d13014206ed
+		sourceLineageTag: market_cap
+		summarizeBy: sum
+		sourceColumn: market_cap
+
+		annotation SummarizationSetBy = Automatic
+
+	column beta
+		dataType: double
+		lineageTag: 9b7ce4ca-c3be-4a8f-817d-84888b067c51
+		sourceLineageTag: beta
+		summarizeBy: sum
+		sourceColumn: beta
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column pe_ratio_ttm
+		dataType: double
+		lineageTag: f8077a3e-d84d-4244-990a-b5c9a71bd703
+		sourceLineageTag: pe_ratio_ttm
+		summarizeBy: sum
+		sourceColumn: pe_ratio_ttm
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column pe_ratio_forward
+		dataType: double
+		lineageTag: e302e26c-e199-490b-a53e-138924f81dc8
+		sourceLineageTag: pe_ratio_forward
+		summarizeBy: sum
+		sourceColumn: pe_ratio_forward
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column price_to_book
+		dataType: double
+		lineageTag: 52a8e167-0bfc-4bcc-b017-0660a22fd5e2
+		sourceLineageTag: price_to_book
+		summarizeBy: sum
+		sourceColumn: price_to_book
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column dividend_yield
+		dataType: double
+		lineageTag: b99187ed-ef8b-4da3-ba8b-1feb2e7c9ebb
+		sourceLineageTag: dividend_yield
+		summarizeBy: sum
+		sourceColumn: dividend_yield
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column eps_ttm
+		dataType: double
+		lineageTag: 593a5420-13c8-4bff-ae4e-1e77cd0ae792
+		sourceLineageTag: eps_ttm
+		summarizeBy: sum
+		sourceColumn: eps_ttm
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column return_on_equity
+		dataType: double
+		lineageTag: 53978bcf-ba0a-43ae-9b93-b5ed449762ea
+		sourceLineageTag: return_on_equity
+		summarizeBy: sum
+		sourceColumn: return_on_equity
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column return_on_assets
+		dataType: double
+		lineageTag: fe6de6de-3d93-4cd7-bf4c-ad726c8369ed
+		sourceLineageTag: return_on_assets
+		summarizeBy: sum
+		sourceColumn: return_on_assets
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column operating_margin
+		dataType: double
+		lineageTag: a4a5e544-143f-4f1e-a535-972726228675
+		sourceLineageTag: operating_margin
+		summarizeBy: sum
+		sourceColumn: operating_margin
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column profit_margin
+		dataType: double
+		lineageTag: 8b5662cc-9199-41ec-8d15-c3024c515323
+		sourceLineageTag: profit_margin
+		summarizeBy: sum
+		sourceColumn: profit_margin
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column gross_margin
+		dataType: double
+		lineageTag: 7813f7cd-2298-4bf0-ae53-3d8be226026b
+		sourceLineageTag: gross_margin
+		summarizeBy: sum
+		sourceColumn: gross_margin
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column revenue_growth_yoy
+		dataType: double
+		lineageTag: 173d00dd-1b2d-436b-bd8b-d19c060284a2
+		sourceLineageTag: revenue_growth_yoy
+		summarizeBy: sum
+		sourceColumn: revenue_growth_yoy
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column earnings_growth_yoy
+		dataType: double
+		lineageTag: 76f42609-1a06-44f6-9ced-5d333da71567
+		sourceLineageTag: earnings_growth_yoy
+		summarizeBy: sum
+		sourceColumn: earnings_growth_yoy
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column debt_to_equity
+		dataType: double
+		lineageTag: 749e898d-6e58-4b88-bad5-e11ac62bbd83
+		sourceLineageTag: debt_to_equity
+		summarizeBy: sum
+		sourceColumn: debt_to_equity
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column current_ratio
+		dataType: double
+		lineageTag: 8d01b5d2-48b7-4c79-ac6d-0d5b04e70d47
+		sourceLineageTag: current_ratio
+		summarizeBy: sum
+		sourceColumn: current_ratio
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column latest_fiscal_year
+		dataType: int64
+		formatString: 0
+		lineageTag: e7e1911b-2d21-43fa-851a-78efa470aa00
+		sourceLineageTag: latest_fiscal_year
+		summarizeBy: sum
+		sourceColumn: latest_fiscal_year
+
+		annotation SummarizationSetBy = Automatic
+
+	column latest_period_end
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 70526bd3-26a5-4d85-b339-e6d7f43586f2
+		sourceLineageTag: latest_period_end
+		summarizeBy: none
+		sourceColumn: latest_period_end
+
+		annotation SummarizationSetBy = Automatic
+
+	column revenue
+		dataType: double
+		lineageTag: 77c47952-a971-4085-b71e-76dd03ac77dd
+		sourceLineageTag: revenue
+		summarizeBy: sum
+		sourceColumn: revenue
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column gross_profit
+		dataType: double
+		lineageTag: e3a0f381-5296-403d-ae23-ee8283b53301
+		sourceLineageTag: gross_profit
+		summarizeBy: sum
+		sourceColumn: gross_profit
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ebitda
+		dataType: double
+		lineageTag: 09c64b3c-2d8a-48af-a933-266d5cc259a4
+		sourceLineageTag: ebitda
+		summarizeBy: sum
+		sourceColumn: ebitda
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column net_income
+		dataType: double
+		lineageTag: 1b33563f-305d-41f4-a8b7-a4b0d5285fda
+		sourceLineageTag: net_income
+		summarizeBy: sum
+		sourceColumn: net_income
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column eps_diluted
+		dataType: double
+		lineageTag: 3439b300-9b2a-4bea-8b38-5d1bc6aaac2c
+		sourceLineageTag: eps_diluted
+		summarizeBy: sum
+		sourceColumn: eps_diluted
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_assets
+		dataType: double
+		lineageTag: d62e329c-03a4-4b63-a5f9-8063053f2ec3
+		sourceLineageTag: total_assets
+		summarizeBy: sum
+		sourceColumn: total_assets
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column book_equity
+		dataType: double
+		lineageTag: 1377f320-0079-4aac-b751-13b6ea8f5e16
+		sourceLineageTag: book_equity
+		summarizeBy: sum
+		sourceColumn: book_equity
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_debt
+		dataType: double
+		lineageTag: 024238b5-9a17-4fe6-a0e5-8f247637470d
+		sourceLineageTag: total_debt
+		summarizeBy: sum
+		sourceColumn: total_debt
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column cash
+		dataType: double
+		lineageTag: 32b9afba-35ae-4742-a639-be1dc237402c
+		sourceLineageTag: cash
+		summarizeBy: sum
+		sourceColumn: cash
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column net_debt
+		dataType: double
+		lineageTag: 403721cb-0e34-433e-b4ac-ce028354369c
+		sourceLineageTag: net_debt
+		summarizeBy: sum
+		sourceColumn: net_debt
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column free_cash_flow
+		dataType: double
+		lineageTag: 285ffdaf-3561-4be7-bb95-5e83d215b155
+		sourceLineageTag: free_cash_flow
+		summarizeBy: sum
+		sourceColumn: free_cash_flow
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column enterprise_value
+		dataType: double
+		lineageTag: 3312a6a6-d010-4801-b8da-f014bd244826
+		sourceLineageTag: enterprise_value
+		summarizeBy: sum
+		sourceColumn: enterprise_value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ev_ebitda
+		dataType: double
+		lineageTag: 80879c9e-f307-4230-b77d-b076fda99cc3
+		sourceLineageTag: ev_ebitda
+		summarizeBy: sum
+		sourceColumn: ev_ebitda
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition gold__valuation_factors = entity
+		mode: directLake
+		source
+			entityName: gold__valuation_factors
+			schemaName: gold
+			expressionSource: 'DirectLake - LH_Bronze'
+

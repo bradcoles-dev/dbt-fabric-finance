@@ -1,0 +1,90 @@
+table gold__return_covariance
+	lineageTag: 8cf79b8a-5cb0-4614-82e4-817f5a630f6b
+	sourceLineageTag: [gold].[gold__return_covariance]
+
+	column ticker_a
+		dataType: string
+		lineageTag: f226e875-ab48-4d59-8a0f-97e04c2fdb29
+		sourceLineageTag: ticker_a
+		summarizeBy: none
+		sourceColumn: ticker_a
+
+		annotation SummarizationSetBy = Automatic
+
+	column ticker_b
+		dataType: string
+		lineageTag: 4eebcd9e-b599-4015-8d47-dfca45aeeb0b
+		sourceLineageTag: ticker_b
+		summarizeBy: none
+		sourceColumn: ticker_b
+
+		annotation SummarizationSetBy = Automatic
+
+	column correlation
+		dataType: double
+		lineageTag: e06bdc05-6264-45d8-8b94-941d5b093200
+		sourceLineageTag: correlation
+		summarizeBy: sum
+		sourceColumn: correlation
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column covariance_daily
+		dataType: double
+		lineageTag: 9aa5e297-65cb-4b80-bf43-13e48bdc4f07
+		sourceLineageTag: covariance_daily
+		summarizeBy: sum
+		sourceColumn: covariance_daily
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column covariance_annual
+		dataType: double
+		lineageTag: d9d44fd5-4fc6-4fa1-86b4-3eb589752277
+		sourceLineageTag: covariance_annual
+		summarizeBy: sum
+		sourceColumn: covariance_annual
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column common_trading_days
+		dataType: int64
+		formatString: 0
+		lineageTag: a9ef4898-2320-4496-a906-fd777b250c4b
+		sourceLineageTag: common_trading_days
+		summarizeBy: sum
+		sourceColumn: common_trading_days
+
+		annotation SummarizationSetBy = Automatic
+
+	column sector_a
+		dataType: string
+		lineageTag: 2dd83211-a8db-4059-a5c7-99aa2d02eeb8
+		sourceLineageTag: sector_a
+		summarizeBy: none
+		sourceColumn: sector_a
+
+		annotation SummarizationSetBy = Automatic
+
+	column sector_b
+		dataType: string
+		lineageTag: 03b6d71a-c8a6-4089-ba68-ab0a4e299aed
+		sourceLineageTag: sector_b
+		summarizeBy: none
+		sourceColumn: sector_b
+
+		annotation SummarizationSetBy = Automatic
+
+	partition gold__return_covariance = entity
+		mode: directLake
+		source
+			entityName: gold__return_covariance
+			schemaName: gold
+			expressionSource: 'DirectLake - LH_Bronze'
+

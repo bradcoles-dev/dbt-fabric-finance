@@ -1,0 +1,28 @@
+select
+    ticker,
+    company_name,
+    sector,
+    industry,
+    country,
+    currency,
+    quote_type,
+    market_cap,
+    beta,
+    pe_ratio_ttm,
+    pe_ratio_forward,
+    price_to_book,
+    dividend_yield,
+    eps_ttm,
+    return_on_equity,
+    return_on_assets,
+    debt_to_equity,
+    current_ratio,
+    operating_margin,
+    profit_margin,
+    gross_margin,
+    revenue_growth_yoy,
+    earnings_growth_yoy,
+    ingested_at,
+    source
+from {{ ref('bronze__company_info') }}
+where ticker is not null

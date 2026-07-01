@@ -1,4 +1,75 @@
 version: 2
 
-models: []
-# Silver model documentation and schema tests go here.
+models:
+  - name: silver__daily_prices
+    description: >
+      Cleaned daily OHLCV price history with daily and log returns.
+      Columns renamed from raw (trailing underscores removed). One row per
+      (ticker, date). Returns are null for the first trading day of each ticker.
+    columns:
+      - name: ticker
+        tests: [not_null]
+      - name: date
+        tests: [not_null]
+      - name: close
+        tests: [not_null]
+      - name: daily_return
+        description: Simple daily return — (close - prev_close) / prev_close. Null on first day.
+      - name: log_return
+        description: Log return — log(close / prev_close). Null on first day. Used for MPT calculations.
+
+  - name: silver__company_info
+    description: >
+      Point-in-time snapshot of company fundamentals. One row per ticker.
+      Source is Yahoo Finance .info, ingested by NB_ingest_yahoo_info.
+    columns:
+      - name: ticker
+        tests: [not_null, unique]
+      - name: market_cap
+        description: Market capitalisation in native currency.
+      - name: pe_ratio_ttm
+        description: Trailing twelve month price-to-earnings ratio.
+      - name: price_to_book
+        description: Price-to-book ratio.
+      - name: dividend_yield
+        description: Annual dividend yield as a decimal (e.g. 0.035 = 3.5%).
+      - name: return_on_equity
+        description: Return on equity as a decimal.
+      - name: beta
+        description: Beta relative to the ticker's benchmark index.
+
+  - name: silver__financials
+    description: >
+      Annual financial statements pivoted from EAV to wide format.
+      One row per (ticker, fiscal year end). Metric names follow yfinance
+      conventions; coverage varies — ASX tickers have lower field coverage
+      than US tickers. net_debt is derived as total_debt - cash.
+    columns:
+      - name: ticker
+        tests: [not_null]
+      - name: period_end
+        description: Fiscal year end date.
+        tests: [not_null]
+      - name: fiscal_year
+        description: Calendar year of the fiscal year end date.
+        tests: [not_null]
+      - name: revenue
+        description: Total revenue (income statement).
+      - name: gross_profit
+        description: Gross profit (income statement).
+      - name: operating_income
+        description: Operating income / EBIT (income statement).
+      - name: net_income
+        description: Net income attributable to shareholders (income statement).
+      - name: eps_diluted
+        description: Diluted earnings per share (income statement).
+      - name: total_assets
+        description: Total assets (balance sheet).
+      - name: equity
+        description: Total stockholders equity (balance sheet).
+      - name: total_debt
+        description: Total debt — short and long term (balance sheet).
+      - name: net_debt
+        description: Net debt — total_debt minus cash (derived).
+      - name: free_cash_flow
+        description: Free cash flow — operating CF minus capex (cash flow statement).

@@ -1,4 +1,64 @@
 version: 2
 
-models: []
-# Gold model documentation and schema tests go here.
+models:
+  - name: gold__risk_metrics
+    description: >
+      Per-ticker risk metrics calculated from the full price history.
+      One row per ticker. Sharpe ratio uses annualised return / annualised
+      volatility with no risk-free rate adjustment (simplified). Beta is
+      sourced from Yahoo Finance rather than computed, as it is calculated
+      against the ticker's own benchmark index.
+    columns:
+      - name: ticker
+        tests: [not_null, unique]
+      - name: annualised_return
+        description: Mean log return × 252. Full history.
+      - name: annualised_volatility
+        description: Std of log returns × √252. Full history.
+      - name: sharpe_ratio
+        description: annualised_return / annualised_volatility. No risk-free rate adjustment.
+      - name: max_drawdown
+        description: Maximum peak-to-trough decline as a negative decimal (e.g. -0.45 = -45%).
+      - name: beta
+        description: Yahoo Finance beta against the ticker's primary benchmark index.
+      - name: trading_days
+        tests: [not_null]
+
+  - name: gold__valuation_factors
+    description: >
+      Combined fundamentals snapshot for value investing factor analysis.
+      One row per ticker. Joins Yahoo Finance snapshot metrics with the
+      most recent annual financial statements. EV/EBITDA is derived as
+      (market_cap + net_debt) / ebitda — null where inputs are unavailable.
+      Currency is not normalised; compare within currency groups.
+    columns:
+      - name: ticker
+        tests: [not_null, unique]
+      - name: company_name
+        tests: [not_null]
+      - name: sector
+        tests: [not_null]
+      - name: ev_ebitda
+        description: >
+          Enterprise value to EBITDA. Null where market_cap, net_debt, or
+          ebitda is unavailable or where ebitda <= 0.
+
+  - name: gold__return_covariance
+    description: >
+      Pairwise log-return correlation and covariance matrix for MPT portfolio
+      optimisation. One row per (ticker_a, ticker_b) pair, including self-pairs
+      (correlation = 1.0 on diagonal). Lookback window defaults to 252 trading
+      days; override with dbt variable covariance_lookback_days.
+      Annualised covariance = daily covariance × 252.
+    columns:
+      - name: ticker_a
+        tests: [not_null]
+      - name: ticker_b
+        tests: [not_null]
+      - name: correlation
+        description: Pearson correlation of daily log returns over the lookback window.
+      - name: covariance_annual
+        description: Annualised return covariance (daily covariance × 252).
+      - name: common_trading_days
+        description: Number of dates where both tickers had a valid log return.
+        tests: [not_null]

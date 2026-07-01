@@ -12,7 +12,8 @@ annotation PBI_QueryOrder = ["DirectLake - LH_Bronze"]
 
 annotation PBI_ProTooling = ["DirectLakeOnOneLakeInWeb","WebModelingEdit"]
 
-ref table gold__risk_metrics
-ref table gold__valuation_factors
-ref table gold__return_covariance
+ref table dim_security
+ref table fact_security_snapshot
+ref table fact_annual_financials
+ref table fact_return_covariance
 

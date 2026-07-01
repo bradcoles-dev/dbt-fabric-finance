@@ -1,0 +1,83 @@
+table dim_security
+	lineageTag: 7d2c8586-b0de-4eaa-9791-f510c57f58bf
+	sourceLineageTag: [gold].[dim_security]
+
+	column ticker
+		dataType: string
+		lineageTag: 1fa6393d-8758-4d10-91a8-fc96393e94e8
+		sourceLineageTag: ticker
+		summarizeBy: none
+		sourceColumn: ticker
+
+		annotation SummarizationSetBy = Automatic
+
+	column company_name
+		dataType: string
+		lineageTag: ed73d397-c14e-4671-b83f-979e22e9efef
+		sourceLineageTag: company_name
+		summarizeBy: none
+		sourceColumn: company_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column sector
+		dataType: string
+		lineageTag: bd5e8a14-7992-45bc-9beb-9f0ba0a7dda2
+		sourceLineageTag: sector
+		summarizeBy: none
+		sourceColumn: sector
+
+		annotation SummarizationSetBy = Automatic
+
+	column industry
+		dataType: string
+		lineageTag: 40496e42-15a9-4390-8fa7-8122bc02318b
+		sourceLineageTag: industry
+		summarizeBy: none
+		sourceColumn: industry
+
+		annotation SummarizationSetBy = Automatic
+
+	column country
+		dataType: string
+		lineageTag: 80c96852-4e2f-4411-953d-9864b6f4c2ab
+		sourceLineageTag: country
+		summarizeBy: none
+		sourceColumn: country
+
+		annotation SummarizationSetBy = Automatic
+
+	column currency
+		dataType: string
+		lineageTag: 0bb8e5ca-853a-4d64-b956-a1a2fb2823db
+		sourceLineageTag: currency
+		summarizeBy: none
+		sourceColumn: currency
+
+		annotation SummarizationSetBy = Automatic
+
+	column exchange
+		dataType: string
+		lineageTag: 19eee35b-b486-442c-b3fd-74c9a357512a
+		sourceLineageTag: exchange
+		summarizeBy: none
+		sourceColumn: exchange
+
+		annotation SummarizationSetBy = Automatic
+
+	column market_index
+		dataType: string
+		lineageTag: 01cdf689-f343-4b1b-a684-485ab2f3faca
+		sourceLineageTag: market_index
+		summarizeBy: none
+		sourceColumn: market_index
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_security = entity
+		mode: directLake
+		source
+			entityName: dim_security
+			schemaName: gold
+			expressionSource: 'DirectLake - LH_Bronze'
+

@@ -1,10 +1,10 @@
-table gold__return_covariance
-	lineageTag: 8cf79b8a-5cb0-4614-82e4-817f5a630f6b
-	sourceLineageTag: [gold].[gold__return_covariance]
+table fact_return_covariance
+	lineageTag: 08978a9f-7372-405a-bee9-fa5e714f60a0
+	sourceLineageTag: [gold].[fact_return_covariance]
 
 	column ticker_a
 		dataType: string
-		lineageTag: f226e875-ab48-4d59-8a0f-97e04c2fdb29
+		lineageTag: 6204285f-2f8a-475a-8c56-3fd55e306fa6
 		sourceLineageTag: ticker_a
 		summarizeBy: none
 		sourceColumn: ticker_a
@@ -13,7 +13,7 @@ table gold__return_covariance
 
 	column ticker_b
 		dataType: string
-		lineageTag: 4eebcd9e-b599-4015-8d47-dfca45aeeb0b
+		lineageTag: d44744a9-369a-4444-8069-9b5d876a4d51
 		sourceLineageTag: ticker_b
 		summarizeBy: none
 		sourceColumn: ticker_b
@@ -22,7 +22,7 @@ table gold__return_covariance
 
 	column correlation
 		dataType: double
-		lineageTag: e06bdc05-6264-45d8-8b94-941d5b093200
+		lineageTag: fa2a9a37-bd30-4d8b-805e-e299c9fbfcde
 		sourceLineageTag: correlation
 		summarizeBy: sum
 		sourceColumn: correlation
@@ -33,7 +33,7 @@ table gold__return_covariance
 
 	column covariance_daily
 		dataType: double
-		lineageTag: 9aa5e297-65cb-4b80-bf43-13e48bdc4f07
+		lineageTag: 9e3ad835-bfb7-46e6-9d07-bd89073d780a
 		sourceLineageTag: covariance_daily
 		summarizeBy: sum
 		sourceColumn: covariance_daily
@@ -44,7 +44,7 @@ table gold__return_covariance
 
 	column covariance_annual
 		dataType: double
-		lineageTag: d9d44fd5-4fc6-4fa1-86b4-3eb589752277
+		lineageTag: 6e5758ea-eafe-48e9-9762-bf269ef0aa62
 		sourceLineageTag: covariance_annual
 		summarizeBy: sum
 		sourceColumn: covariance_annual
@@ -56,7 +56,7 @@ table gold__return_covariance
 	column common_trading_days
 		dataType: int64
 		formatString: 0
-		lineageTag: a9ef4898-2320-4496-a906-fd777b250c4b
+		lineageTag: cdc8b1c9-d44b-40ae-bc18-309d4eca3253
 		sourceLineageTag: common_trading_days
 		summarizeBy: sum
 		sourceColumn: common_trading_days
@@ -65,7 +65,7 @@ table gold__return_covariance
 
 	column sector_a
 		dataType: string
-		lineageTag: 2dd83211-a8db-4059-a5c7-99aa2d02eeb8
+		lineageTag: 6e23aa30-118f-4c54-b276-6a9accd4020b
 		sourceLineageTag: sector_a
 		summarizeBy: none
 		sourceColumn: sector_a
@@ -74,17 +74,17 @@ table gold__return_covariance
 
 	column sector_b
 		dataType: string
-		lineageTag: 03b6d71a-c8a6-4089-ba68-ab0a4e299aed
+		lineageTag: c6e486ff-b114-4d19-8b9c-eb820c4c1cea
 		sourceLineageTag: sector_b
 		summarizeBy: none
 		sourceColumn: sector_b
 
 		annotation SummarizationSetBy = Automatic
 
-	partition gold__return_covariance = entity
+	partition fact_return_covariance = entity
 		mode: directLake
 		source
-			entityName: gold__return_covariance
+			entityName: fact_return_covariance
 			schemaName: gold
 			expressionSource: 'DirectLake - LH_Bronze'
 

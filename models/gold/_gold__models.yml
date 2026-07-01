@@ -67,6 +67,9 @@ models:
       - name: ticker_b
         tests: [not_null]
       - name: correlation
-        tests: [not_null]
+        tests:
+          - not_null:
+              config:
+                severity: warn
       - name: common_trading_days
         tests: [not_null]

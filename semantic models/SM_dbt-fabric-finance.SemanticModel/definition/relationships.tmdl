@@ -1,0 +1,17 @@
+relationship 9fbf080e-fc2a-1db6-542d-854fc117b5f7
+	fromColumn: dim_security.ticker
+	toColumn: fact_annual_financials.ticker
+
+relationship 618a6e79-a4a8-f937-0068-31914e76f249
+	fromColumn: dim_security.ticker
+	toColumn: fact_return_covariance.sector_b
+
+relationship 903a591a-e1b8-c86b-107d-a9392929a9da
+	isActive: false
+	fromColumn: dim_security.ticker
+	toColumn: fact_return_covariance.ticker_b
+
+relationship 50a3a61c-a4a6-f018-ae62-05c79f766328
+	fromColumn: dim_security.ticker
+	toColumn: fact_security_snapshot.ticker
+

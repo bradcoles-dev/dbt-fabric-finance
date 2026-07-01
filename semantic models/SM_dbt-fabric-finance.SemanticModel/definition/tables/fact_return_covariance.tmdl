@@ -24,7 +24,7 @@ table fact_return_covariance
 		dataType: double
 		lineageTag: fa2a9a37-bd30-4d8b-805e-e299c9fbfcde
 		sourceLineageTag: correlation
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: correlation
 
 		annotation SummarizationSetBy = Automatic
@@ -35,7 +35,7 @@ table fact_return_covariance
 		dataType: double
 		lineageTag: 9e3ad835-bfb7-46e6-9d07-bd89073d780a
 		sourceLineageTag: covariance_daily
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: covariance_daily
 
 		annotation SummarizationSetBy = Automatic
@@ -46,7 +46,7 @@ table fact_return_covariance
 		dataType: double
 		lineageTag: 6e5758ea-eafe-48e9-9762-bf269ef0aa62
 		sourceLineageTag: covariance_annual
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: covariance_annual
 
 		annotation SummarizationSetBy = Automatic
@@ -58,7 +58,7 @@ table fact_return_covariance
 		formatString: 0
 		lineageTag: cdc8b1c9-d44b-40ae-bc18-309d4eca3253
 		sourceLineageTag: common_trading_days
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: common_trading_days
 
 		annotation SummarizationSetBy = Automatic

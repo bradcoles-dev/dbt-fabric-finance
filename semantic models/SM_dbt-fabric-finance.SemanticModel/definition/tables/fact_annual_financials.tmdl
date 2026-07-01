@@ -35,7 +35,7 @@ table fact_annual_financials
 		dataType: double
 		lineageTag: cfff15a5-5271-4044-9dad-e96edd7c8728
 		sourceLineageTag: revenue
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: revenue
 
 		annotation SummarizationSetBy = Automatic
@@ -46,7 +46,7 @@ table fact_annual_financials
 		dataType: double
 		lineageTag: 10dd09f2-7f95-41cb-8a44-b4db099beba5
 		sourceLineageTag: gross_profit
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: gross_profit
 
 		annotation SummarizationSetBy = Automatic
@@ -57,7 +57,7 @@ table fact_annual_financials
 		dataType: double
 		lineageTag: 9d6493ea-6f2d-4ef5-92ca-52e1c9905a1a
 		sourceLineageTag: operating_income
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: operating_income
 
 		annotation SummarizationSetBy = Automatic
@@ -68,7 +68,7 @@ table fact_annual_financials
 		dataType: double
 		lineageTag: cfd9acb9-b764-487e-9930-872d068d96d2
 		sourceLineageTag: ebit
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: ebit
 
 		annotation SummarizationSetBy = Automatic
@@ -79,7 +79,7 @@ table fact_annual_financials
 		dataType: double
 		lineageTag: 4daf67a3-be92-4c14-a5f3-cc62e0f4900c
 		sourceLineageTag: ebitda
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: ebitda
 
 		annotation SummarizationSetBy = Automatic
@@ -90,7 +90,7 @@ table fact_annual_financials
 		dataType: double
 		lineageTag: 159a1e84-82fc-474f-acda-eb990d0ca398
 		sourceLineageTag: net_income
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: net_income
 
 		annotation SummarizationSetBy = Automatic
@@ -101,7 +101,7 @@ table fact_annual_financials
 		dataType: double
 		lineageTag: 6fc7fa3e-3196-400f-a99b-9dd14f45f7b6
 		sourceLineageTag: eps_basic
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: eps_basic
 
 		annotation SummarizationSetBy = Automatic
@@ -112,7 +112,7 @@ table fact_annual_financials
 		dataType: double
 		lineageTag: 878d777e-1f4b-4b77-b9d2-256fab78d50b
 		sourceLineageTag: eps_diluted
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: eps_diluted
 
 		annotation SummarizationSetBy = Automatic
@@ -123,7 +123,7 @@ table fact_annual_financials
 		dataType: double
 		lineageTag: 3c50614e-6be4-4566-8c18-93b24a3cef99
 		sourceLineageTag: total_assets
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: total_assets
 
 		annotation SummarizationSetBy = Automatic
@@ -134,7 +134,7 @@ table fact_annual_financials
 		dataType: double
 		lineageTag: 22255ee0-eb70-41fc-8d07-657d1c359dda
 		sourceLineageTag: book_equity
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: book_equity
 
 		annotation SummarizationSetBy = Automatic
@@ -145,7 +145,7 @@ table fact_annual_financials
 		dataType: double
 		lineageTag: c4375db8-0f3c-4f03-a88c-8727881cd75d
 		sourceLineageTag: total_debt
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: total_debt
 
 		annotation SummarizationSetBy = Automatic
@@ -156,7 +156,7 @@ table fact_annual_financials
 		dataType: double
 		lineageTag: 541b9e4c-4fcd-4610-a7cc-be3fcf3d1c08
 		sourceLineageTag: cash
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: cash
 
 		annotation SummarizationSetBy = Automatic
@@ -167,7 +167,7 @@ table fact_annual_financials
 		dataType: double
 		lineageTag: ec59f40e-4dd7-4e3d-a37b-20163d17ec7a
 		sourceLineageTag: current_assets
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: current_assets
 
 		annotation SummarizationSetBy = Automatic
@@ -178,7 +178,7 @@ table fact_annual_financials
 		dataType: double
 		lineageTag: 53e49b5a-5cc7-4cf6-862a-81a084198cc2
 		sourceLineageTag: current_liabilities
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: current_liabilities
 
 		annotation SummarizationSetBy = Automatic
@@ -189,7 +189,7 @@ table fact_annual_financials
 		dataType: double
 		lineageTag: 76525ab4-a5c0-497a-8a0f-26e175ce6e28
 		sourceLineageTag: operating_cash_flow
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: operating_cash_flow
 
 		annotation SummarizationSetBy = Automatic
@@ -200,7 +200,7 @@ table fact_annual_financials
 		dataType: double
 		lineageTag: a9065a15-7a9e-4ea5-a26a-194b910b70b2
 		sourceLineageTag: capex
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: capex
 
 		annotation SummarizationSetBy = Automatic
@@ -211,7 +211,7 @@ table fact_annual_financials
 		dataType: double
 		lineageTag: 25c5936b-e3b9-47aa-a60c-7d4b3b0265cc
 		sourceLineageTag: free_cash_flow
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: free_cash_flow
 
 		annotation SummarizationSetBy = Automatic
@@ -222,7 +222,7 @@ table fact_annual_financials
 		dataType: double
 		lineageTag: e6b5723f-08b5-4287-a859-a7602726da3e
 		sourceLineageTag: net_debt
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: net_debt
 
 		annotation SummarizationSetBy = Automatic

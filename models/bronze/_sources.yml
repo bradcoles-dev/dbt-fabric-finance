@@ -2,10 +2,83 @@ version: 2
 
 sources:
   - name: bronze
-    description: Raw financial market data landed by Fabric ingestion notebooks.
-    schema: bronze
-    tables: []
-    # Tables will be registered here as ingestion notebooks are built.
-    # Example entry:
-    # - name: raw_daily_prices
-    #   description: End-of-day OHLCV prices from the market data API.
+    description: Raw financial market data landed by Fabric ingestion notebooks into the Bronze Lakehouse.
+    schema: dbo
+    tables:
+      - name: raw_daily_prices
+        description: >
+          End-of-day OHLCV price history for S&P 100 and ASX 200 tickers from Yahoo Finance.
+          Covers from 2015-01-01 to the most recent trading day. Partitioned by date_.
+        columns:
+          - name: ticker
+            description: Yahoo Finance ticker symbol.
+            tests: [not_null]
+          - name: date_
+            description: Trading date (UTC-normalised).
+            tests: [not_null]
+          - name: open_
+            description: Adjusted opening price.
+          - name: high_
+            description: Adjusted intraday high.
+          - name: low_
+            description: Adjusted intraday low.
+          - name: close_
+            description: Adjusted closing price.
+            tests: [not_null]
+          - name: volume_
+            description: Share volume traded.
+          - name: ingested_at
+            description: UTC timestamp when the row was written by the notebook.
+            tests: [not_null]
+          - name: source
+            tests: [not_null]
+
+      - name: raw_company_info
+        description: >
+          Point-in-time snapshot of company fundamentals from yf.Ticker().info.
+          One row per ticker. Refreshed on each notebook run.
+        columns:
+          - name: ticker
+            tests: [not_null, unique]
+          - name: market_cap
+            description: Market capitalisation in the ticker's native currency.
+          - name: pe_ratio_ttm
+            description: Price-to-earnings ratio (trailing twelve months).
+          - name: price_to_book
+            description: Price-to-book ratio.
+          - name: dividend_yield
+            description: Annual dividend yield as a decimal (e.g. 0.035 = 3.5%).
+          - name: return_on_equity
+            description: Return on equity as a decimal.
+          - name: ingested_at
+            tests: [not_null]
+          - name: source
+            tests: [not_null]
+
+      - name: raw_financials
+        description: >
+          Annual financial statements in long/EAV format. Covers income statement,
+          balance sheet, and cash flow for all tickers. One row per
+          (ticker, period_end, statement_type, metric_name).
+        columns:
+          - name: ticker
+            tests: [not_null]
+          - name: period_end
+            description: Fiscal year end date.
+            tests: [not_null]
+          - name: statement_type
+            description: One of income_statement, balance_sheet, cash_flow.
+            tests:
+              - not_null
+              - accepted_values:
+                  arguments:
+                    values: [income_statement, balance_sheet, cash_flow]
+          - name: metric_name
+            description: Raw metric name as returned by yfinance.
+            tests: [not_null]
+          - name: value
+            description: Metric value in the ticker's reporting currency.
+          - name: ingested_at
+            tests: [not_null]
+          - name: source
+            tests: [not_null]

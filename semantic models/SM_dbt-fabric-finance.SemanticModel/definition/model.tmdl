@@ -16,5 +16,4 @@ ref table dim_security
 ref table fact_security_snapshot
 ref table fact_annual_financials
 ref table fact_return_covariance
-ref table _Measures
 

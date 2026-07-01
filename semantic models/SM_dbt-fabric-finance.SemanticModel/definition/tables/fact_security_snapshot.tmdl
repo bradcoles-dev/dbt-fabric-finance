@@ -282,6 +282,81 @@ table fact_security_snapshot
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	measure '# Securities' = COUNTROWS('dim_security')
+		lineageTag: 5e068a2c-5e70-4728-84e7-2f6b9d2d65f3
+		formatString: #,##0
+		displayFolder: Overview
+
+	measure 'Total Market Cap' = SUM('fact_security_snapshot'[market_cap])
+		lineageTag: 25b55ab9-e56b-4e63-807e-de4f76435bf7
+		formatString: #,##0
+		displayFolder: Overview
+
+	measure 'Avg Annualised Return' = AVERAGE('fact_security_snapshot'[annualised_return])
+		lineageTag: 5030c8d5-dc3b-41cb-828e-e612ed844aec
+		formatString: 0.00%
+		displayFolder: Risk
+
+	measure 'Avg Volatility' = AVERAGE('fact_security_snapshot'[annualised_volatility])
+		lineageTag: f2d76be2-b42c-4950-9b70-a93c981cb9e8
+		formatString: 0.00%
+		displayFolder: Risk
+
+	measure 'Avg Sharpe Ratio' = AVERAGEX(FILTER('fact_security_snapshot', NOT ISBLANK('fact_security_snapshot'[sharpe_ratio])), 'fact_security_snapshot'[sharpe_ratio])
+		lineageTag: 928b0ac9-5771-4581-a4ae-ce61d9678a91
+		formatString: 0.00
+		displayFolder: Risk
+
+	measure 'Avg Max Drawdown' = AVERAGE('fact_security_snapshot'[max_drawdown])
+		lineageTag: dbafce9d-8a1f-457e-81bf-d60f938ae9f6
+		formatString: 0.00%
+		displayFolder: Risk
+
+	measure 'Best Sharpe Ratio' = MAXX(FILTER('fact_security_snapshot', NOT ISBLANK('fact_security_snapshot'[sharpe_ratio])), 'fact_security_snapshot'[sharpe_ratio])
+		lineageTag: d1ab66a2-e24d-403b-b645-1744ea7044d1
+		formatString: 0.00
+		displayFolder: Risk
+
+	measure 'Worst Max Drawdown' = MINX('fact_security_snapshot', 'fact_security_snapshot'[max_drawdown])
+		lineageTag: 892fcea2-6554-40f5-8d1b-f0dca49788f3
+		formatString: 0.00%
+		displayFolder: Risk
+
+	measure 'Avg Beta' = AVERAGEX(FILTER('fact_security_snapshot', NOT ISBLANK('fact_security_snapshot'[beta])), 'fact_security_snapshot'[beta])
+		lineageTag: 62eb9d71-8c2b-4aaf-ab60-4a3fef68508d
+		formatString: 0.00
+		displayFolder: Risk
+
+	measure 'Median P/E (TTM)' = MEDIAN('fact_security_snapshot'[pe_ratio_ttm])
+		lineageTag: f07f19fc-8ace-4375-8280-caa50019eee1
+		formatString: 0.0
+		displayFolder: Valuation
+
+	measure 'Median EV/EBITDA' = MEDIAN('fact_security_snapshot'[ev_ebitda])
+		lineageTag: 78313583-d9d2-4e49-a486-6d8721435d37
+		formatString: 0.0
+		displayFolder: Valuation
+
+	measure 'Avg Dividend Yield' = AVERAGEX(FILTER('fact_security_snapshot', NOT ISBLANK('fact_security_snapshot'[dividend_yield])), 'fact_security_snapshot'[dividend_yield])
+		lineageTag: ba8b55ec-e310-4513-816c-1d39ffb9202d
+		formatString: 0.00%
+		displayFolder: Valuation
+
+	measure 'Avg Price-to-Book' = AVERAGEX(FILTER('fact_security_snapshot', NOT ISBLANK('fact_security_snapshot'[price_to_book])), 'fact_security_snapshot'[price_to_book])
+		lineageTag: 50aa25ec-aa82-469a-aab7-4ac0297fe359
+		formatString: 0.00
+		displayFolder: Valuation
+
+	measure 'Avg Return on Equity' = AVERAGEX(FILTER('fact_security_snapshot', NOT ISBLANK('fact_security_snapshot'[return_on_equity])), 'fact_security_snapshot'[return_on_equity])
+		lineageTag: 1dcd7549-4867-45b7-901f-87c973d97029
+		formatString: 0.00%
+		displayFolder: Profitability
+
+	measure 'Avg Operating Margin' = AVERAGEX(FILTER('fact_security_snapshot', NOT ISBLANK('fact_security_snapshot'[operating_margin])), 'fact_security_snapshot'[operating_margin])
+		lineageTag: 30a6e71e-aaa3-4919-9e67-c4fc292c38ff
+		formatString: 0.00%
+		displayFolder: Profitability
+
 	partition fact_security_snapshot = entity
 		mode: directLake
 		source

@@ -32,8 +32,6 @@ dbt-fabric-finance/
 ├── tests/              # Custom singular data tests
 ├── macros/             # Reusable Jinja/SQL macros
 ├── analyses/           # Ad-hoc analytical SQL (not materialised)
-├── semantic-models/    # Power BI semantic model definition (DirectLake)
-│   └── FinanceAnalytics.SemanticModel/
 └── docs/               # Supplementary documentation
 ```
 

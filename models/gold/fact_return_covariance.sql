@@ -1,6 +1,5 @@
--- Pairwise return correlation and covariance matrix for MPT portfolio construction.
--- Lookback defaults to 252 trading days (1 year). Override with:
---   dbt run --vars "covariance_lookback_days: 756"   -- 3-year window
+-- sector_a / sector_b are denormalised here to avoid requiring USERELATIONSHIP
+-- DAX for every sector-based cross-filter on the covariance matrix.
 
 {% set lookback_days = var('covariance_lookback_days', 252) %}
 
@@ -16,12 +15,12 @@ with recent_returns as (
 pairs as (
 
     select
-        a.ticker                                               as ticker_a,
-        b.ticker                                               as ticker_b,
-        round(corr(a.log_return, b.log_return), 6)            as correlation,
-        round(covar_samp(a.log_return, b.log_return), 10)     as covariance_daily,
+        a.ticker                                                as ticker_a,
+        b.ticker                                                as ticker_b,
+        round(corr(a.log_return, b.log_return), 6)             as correlation,
+        round(covar_samp(a.log_return, b.log_return), 10)      as covariance_daily,
         round(covar_samp(a.log_return, b.log_return) * 252, 6) as covariance_annual,
-        count(*)                                               as common_trading_days
+        count(*)                                                as common_trading_days
     from recent_returns a
     join recent_returns b on a.date = b.date
     group by a.ticker, b.ticker

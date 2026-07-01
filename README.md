@@ -9,7 +9,7 @@ A public reference implementation of a **bronze / silver / gold medallion archit
 ## Architecture
 
 ```
-External APIs → Fabric Notebooks → Bronze Lakehouse → dbt (Silver) → dbt (Gold)
+External APIs → Fabric Notebooks → Bronze Lakehouse → dbt (Silver) → dbt (Gold) → Power BI Semantic Model
 ```
 
 See [`docs/architecture.md`](docs/architecture.md) for the full diagram and layer responsibilities.
@@ -32,6 +32,8 @@ dbt-fabric-finance/
 ├── tests/              # Custom singular data tests
 ├── macros/             # Reusable Jinja/SQL macros
 ├── analyses/           # Ad-hoc analytical SQL (not materialised)
+├── semantic-models/    # Power BI semantic model definition (DirectLake)
+│   └── FinanceAnalytics.SemanticModel/
 └── docs/               # Supplementary documentation
 ```
 
@@ -87,6 +89,18 @@ Upload notebooks from `notebooks/bronze/` to your Fabric workspace and run them 
 dbt run
 dbt test
 ```
+
+### 7. Deploy the semantic model
+
+Open your Fabric workspace, go to **New item → Semantic model (from file)**, and import `semantic-models/FinanceAnalytics.SemanticModel/model.bim`.
+
+After importing, open the model settings and update the LH_Bronze data source connection with your workspace and lakehouse GUIDs. The model uses **DirectLake** mode — no data is copied into the model. Tables served:
+
+| Table | Source | Grain |
+|-------|--------|-------|
+| `ValuationFactors` | `gold.gold__valuation_factors` | 1 row per ticker |
+| `RiskMetrics` | `gold.gold__risk_metrics` | 1 row per ticker |
+| `ReturnCovariance` | `gold.gold__return_covariance` | 1 row per ticker pair |
 
 ---
 

@@ -21,11 +21,7 @@ table _Measures
 		formatString: 0.00%
 		displayFolder: Risk
 
-	measure 'Avg Sharpe Ratio' =
-			AVERAGEX(
-			    FILTER('fact_security_snapshot', NOT ISBLANK('fact_security_snapshot'[sharpe_ratio])),
-			    'fact_security_snapshot'[sharpe_ratio]
-			)
+	measure 'Avg Sharpe Ratio' = AVERAGEX(FILTER('fact_security_snapshot', NOT ISBLANK('fact_security_snapshot'[sharpe_ratio])), 'fact_security_snapshot'[sharpe_ratio])
 		lineageTag: 928b0ac9-5771-4581-a4ae-ce61d9678a91
 		formatString: 0.00
 		displayFolder: Risk
@@ -35,11 +31,7 @@ table _Measures
 		formatString: 0.00%
 		displayFolder: Risk
 
-	measure 'Best Sharpe Ratio' =
-			MAXX(
-			    FILTER('fact_security_snapshot', NOT ISBLANK('fact_security_snapshot'[sharpe_ratio])),
-			    'fact_security_snapshot'[sharpe_ratio]
-			)
+	measure 'Best Sharpe Ratio' = MAXX(FILTER('fact_security_snapshot', NOT ISBLANK('fact_security_snapshot'[sharpe_ratio])), 'fact_security_snapshot'[sharpe_ratio])
 		lineageTag: d1ab66a2-e24d-403b-b645-1744ea7044d1
 		formatString: 0.00
 		displayFolder: Risk
@@ -49,11 +41,7 @@ table _Measures
 		formatString: 0.00%
 		displayFolder: Risk
 
-	measure 'Avg Beta' =
-			AVERAGEX(
-			    FILTER('fact_security_snapshot', NOT ISBLANK('fact_security_snapshot'[beta])),
-			    'fact_security_snapshot'[beta]
-			)
+	measure 'Avg Beta' = AVERAGEX(FILTER('fact_security_snapshot', NOT ISBLANK('fact_security_snapshot'[beta])), 'fact_security_snapshot'[beta])
 		lineageTag: 62eb9d71-8c2b-4aaf-ab60-4a3fef68508d
 		formatString: 0.00
 		displayFolder: Risk
@@ -68,54 +56,27 @@ table _Measures
 		formatString: 0.0
 		displayFolder: Valuation
 
-	measure 'Avg Dividend Yield' =
-			AVERAGEX(
-			    FILTER('fact_security_snapshot', NOT ISBLANK('fact_security_snapshot'[dividend_yield])),
-			    'fact_security_snapshot'[dividend_yield]
-			)
+	measure 'Avg Dividend Yield' = AVERAGEX(FILTER('fact_security_snapshot', NOT ISBLANK('fact_security_snapshot'[dividend_yield])), 'fact_security_snapshot'[dividend_yield])
 		lineageTag: ba8b55ec-e310-4513-816c-1d39ffb9202d
 		formatString: 0.00%
 		displayFolder: Valuation
 
-	measure 'Avg Price-to-Book' =
-			AVERAGEX(
-			    FILTER('fact_security_snapshot', NOT ISBLANK('fact_security_snapshot'[price_to_book])),
-			    'fact_security_snapshot'[price_to_book]
-			)
+	measure 'Avg Price-to-Book' = AVERAGEX(FILTER('fact_security_snapshot', NOT ISBLANK('fact_security_snapshot'[price_to_book])), 'fact_security_snapshot'[price_to_book])
 		lineageTag: 50aa25ec-aa82-469a-aab7-4ac0297fe359
 		formatString: 0.00
 		displayFolder: Valuation
 
-	measure 'Avg Return on Equity' =
-			AVERAGEX(
-			    FILTER('fact_security_snapshot', NOT ISBLANK('fact_security_snapshot'[return_on_equity])),
-			    'fact_security_snapshot'[return_on_equity]
-			)
+	measure 'Avg Return on Equity' = AVERAGEX(FILTER('fact_security_snapshot', NOT ISBLANK('fact_security_snapshot'[return_on_equity])), 'fact_security_snapshot'[return_on_equity])
 		lineageTag: 1dcd7549-4867-45b7-901f-87c973d97029
 		formatString: 0.00%
 		displayFolder: Profitability
 
-	measure 'Avg Operating Margin' =
-			AVERAGEX(
-			    FILTER('fact_security_snapshot', NOT ISBLANK('fact_security_snapshot'[operating_margin])),
-			    'fact_security_snapshot'[operating_margin]
-			)
+	measure 'Avg Operating Margin' = AVERAGEX(FILTER('fact_security_snapshot', NOT ISBLANK('fact_security_snapshot'[operating_margin])), 'fact_security_snapshot'[operating_margin])
 		lineageTag: 30a6e71e-aaa3-4919-9e67-c4fc292c38ff
 		formatString: 0.00%
 		displayFolder: Profitability
 
-	column _placeholder
-		dataType: string
-		isHidden
-		lineageTag: 5d6b6b77-56fa-4426-839c-de3f4abb1379
-		summarizeBy: none
-		isNameInferred
-		isDataTypeInferred
-		sourceColumn: _placeholder
-
-		annotation SummarizationSetBy = Automatic
-
 	partition _Measures = calculated
 		mode: import
-		source = {("")}
+		source = {""}
 
